@@ -21,6 +21,8 @@
 </head>
 <body>
     
+    <p><a href="index.php">&laquo; back</a></p>
+    
     <?php
         require('functions.php');
         

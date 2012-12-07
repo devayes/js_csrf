@@ -6,6 +6,6 @@ var OBJ={
 $(function(){
     $('form').submit(function(){
         var tok = OBJ.getToken();
-        form.submit();
+        return true;
     });
 });

@@ -19,7 +19,7 @@ function get_ajax_token()
  **/
 function valid_ajax_token($tok = null, $seconds = 10)
 {       
-    if (is_null($tok) AND isset($_COOKIE['atok'])) {
+    if (is_null($tok) && isset($_COOKIE['atok'])) {
         $tok = $_COOKIE['atok'];
     }
     $return = false;
@@ -43,7 +43,7 @@ function valid_ajax_token($tok = null, $seconds = 10)
  **/
 function simple_encrypt($str='', $key='' )
 {
-    if(!isset($key) || $key == '') {
+    if($key == '') {
         $key = 'somekey';
     }
 
@@ -67,7 +67,7 @@ function simple_encrypt($str='', $key='' )
  **/
 function simple_decrypt($str='', $key='')
 {
-        if(!isset($key) || $key==''){
+        if($key==''){
             $key = 'somekey';
         }
         

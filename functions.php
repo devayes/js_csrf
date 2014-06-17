@@ -29,7 +29,7 @@ function valid_ajax_token($tok = null, $seconds = 10)
         $return = true;
     }
     if (isset($_COOKIE['atok'])) {
-        setcookie('atok', null, time()-100, '/', 'localhost');
+        setcookie('atok', null, time()-100, '/', $_SERVER['SERVER_NAME']);
     }
     return $return;
 }

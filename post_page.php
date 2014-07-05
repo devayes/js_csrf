@@ -27,12 +27,10 @@
         require('functions.php');
         
         if(valid_ajax_token()){
-            echo '<p>Ajax token is valid.</p>';
-            echo '<ul>';
-            foreach($_POST as $k=>$v){
-                echo '<li>'.$k.' = '.$v.'</li>';
-            }
-            echo '</ul>';
+            echo '<h2>Ajax token is valid.</h2>';
+            echo '<p><b>Refresh the page to re-post the form.</b></p>';
+            echo '<hr>';
+            echo '<pre>'.print_r($_POST, true).'</pre>';
         } else {
             echo '<p>Ajax token is <strong>NOT</strong> valid.</p>';
         }

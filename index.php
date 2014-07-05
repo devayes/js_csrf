@@ -20,7 +20,9 @@
 
 </head>
 <body>
-    
+    <h2>CSRF Prevention using Javascript & Cookies</h2>
+    <p>How it works: An event is attached to form submit, which then grabs an expiring token via ajax, sets a cookie via javascript, then confirms the validity of the cookie value server side.</p>
+    <p>What this does is insures a client triggers the submit event (or any event attached, really.) from the element, is able to execute javascript, is able to store cookies set by javascipt. Something bots and scrapers are ill-equipped to do.</p>
     <form action="post_page.php" method="post">
         <p><input type="text" name="text" value="Sample text"></p>
         <p>

@@ -23,13 +23,16 @@ function valid_ajax_token($tok = null, $seconds = 10)
         $tok = $_COOKIE['atok'];
     }
     $return = false;
-    $tok = str_replace(' ', '+', trim($tok));
-    $detok = simple_decrypt($tok);
+    $detok = simple_decrypt(trim($tok));
     if ($detok >= strtotime('-'.(int)$seconds.' seconds')) {
         $return = true;
     }
     if (isset($_COOKIE['atok'])) {
-        setcookie('atok', null, time()-100, '/', $_SERVER['SERVER_NAME']);
+        $host = $_SERVER['SERVER_NAME'];
+        if($host == 'localhost'){
+            $host = '';
+        }
+        setcookie('atok', null, time()-100, '/', $host);
     }
     return $return;
 }
@@ -55,7 +58,7 @@ function simple_encrypt($str='', $key='' )
         $result .= $char;
     }
 
-    return base64_encode($result);
+    return base64_url_encode($result);
 }
      
 /**
@@ -71,7 +74,7 @@ function simple_decrypt($str='', $key='')
             $key = 'somekey';
         }
         
-        $str = base64_decode(str_replace(' ','+',$str));
+        $str = base64_url_decode($str);
         $result = '';
         for($i = 1; $i <= strlen($str); $i++){
             $char = substr($str, $i-1, 1);
@@ -81,4 +84,14 @@ function simple_decrypt($str='', $key='')
         }
         
     return $result;
+}
+
+function base64_url_encode($input) 
+{
+    return strtr(base64_encode($input), '+/=', '-_,');
+}
+
+function base64_url_decode($input) 
+{
+    return base64_decode(strtr($input, '-_,', '+/='));
 }

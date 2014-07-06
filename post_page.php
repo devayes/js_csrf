@@ -1,36 +1,42 @@
-<!DOCTYPE html>
+<?php
+require('functions.php');
 
+if(isset($_POST['asynctest']) && $_POST['asynctest']){
+    if(valid_ajax_token()){
+        die('Token VALID.'."\r\r".'Response:'."\r".print_r($_POST, true));
+    } else {
+        die('Invalid token.');
+    }
+}
+?>
+<!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
-
-  <!-- Set the viewport width to device width for mobile -->
-  <meta name="viewport" content="width=device-width" />
-
-  <title>CSRF Prevention Using Cookies - Post Page</title>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+    <title>CSRF Prevention Using Cookies - Post Page</title>
   
-  <!-- IE Fix for HTML5 Tags -->
-  <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-
+    <!-- IE Fix for HTML5 Tags -->
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
 <body>
     
     <p><a href="index.php">&laquo; back</a></p>
     
     <?php
-        require('functions.php');
-        
         if(valid_ajax_token()){
             echo '<h2>Ajax token is valid.</h2>';
             echo '<p><b>Refresh the page to re-post the form.</b></p>';
             echo '<hr>';
-            echo '<pre>'.print_r($_POST, true).'</pre>';
+            echo 'POST: <pre>'.print_r($_POST, true).'</pre>';
+            echo 'GET: <pre>'.print_r($_GET, true).'</pre>';
         } else {
             echo '<p>Ajax token is <strong>NOT</strong> valid.</p>';
         }

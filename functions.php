@@ -22,18 +22,18 @@ function valid_ajax_token($tok = null, $seconds = 10)
     if (is_null($tok) && isset($_COOKIE['atok'])) {
         $tok = $_COOKIE['atok'];
     }
+
     $return = false;
     $detok = simple_decrypt(trim($tok));
     if ($detok >= strtotime('-'.(int)$seconds.' seconds')) {
         $return = true;
     }
+
     if (isset($_COOKIE['atok'])) {
-        $host = $_SERVER['SERVER_NAME'];
-        if($host == 'localhost'){
-            $host = '';
-        }
+        $host = ($_SERVER['SERVER_NAME'] == 'localhost' ? '' : $_SERVER['SERVER_NAME']);
         setcookie('atok', null, time()-100, '/', $host);
     }
+    
     return $return;
 }
 

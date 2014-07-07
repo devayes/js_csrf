@@ -12,7 +12,7 @@ Usages:
 - Ajax `$_GET` URL's to retrieve a user's profile information can be accessed by copying the URL directly into the address bar, allowing the data to be scraped. Past and current solutions include checking `$_SERVER['HTTP_X_REQUESTED_WITH']` (easily spoofed) or using the `$_POST` method. This technique will protect any URL using any method.
 - Most forms these days include a hidden input token also stashed in a session variable. Sessions are generally client agnostic in that it will set those tokens for a remote script that can then scrape the value out of the token input and post the values to the action URL (ie: easily defeated). This technique ensures the client triggers a javascript event and is able to store a cookie set by javascript. Also, cookies can only be set on the domain the script is running on (never minding iframes).
 - You might have links like `/profile/delete` or `/contact/add/123` Local or remote links can then be crafted to these URL's baiting unsuspecting users into performing unintended actions. This technique can be attached to any javascript event (ie: click) and resolves this issue.
-- Another solution I've seen is checking the referer to ensure actions taken are verified to be on the local domain. SOme browsers and/or firewalls block the referer from being sent and it can also be spoofed. This technique ensures the event was fired on the domain the cookie was created.
+- Another solution I've seen is checking the referer to ensure actions taken are verified to be on the local domain. Some browsers and/or firewalls block the referer from being sent, it can also be easily spoofed. This technique ensures the event was fired on the domain the cookie was created.
 
 Suggestions:
 ------------

@@ -20,6 +20,10 @@ Suggestions:
 - You might still want to think about double clicks. You could check if a click has happened and just return `false` instead of creating another token which would prevent extra clicks from propagating and having any effect.
 - You could, if you were crafty enough, set tokens by name (eg: `OBJ.setToken('foo');`) and check them by name (eg: `valid_ajax_token('foo');`). It'd be useful if you wanted to fire multiple protected events.
 
+Caveats:
+------------
+If a user has javascript or cookies disabled (< 2% of users), it will impede functionality. These are testable and left as an exercise for the developer. [(hint)](www.google.com).
+
 Examples:
 ------------
 Examples included. Load up index.php and go.

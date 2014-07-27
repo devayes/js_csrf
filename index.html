@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Js csrf by devayes</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Js csrf</h1>
+        <p>Javascript CSRF Prevention - A very simple example how to use javascript to prevent CSRF and resource abuse.</p>
+
+        <p class="view"><a href="https://github.com/devayes/js_csrf">View the Project on GitHub <small>devayes/js_csrf</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/devayes/js_csrf/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/devayes/js_csrf/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/devayes/js_csrf">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="csrf-prevention-using-javascript--cookies" class="anchor" href="#csrf-prevention-using-javascript--cookies"><span class="octicon octicon-link"></span></a>CSRF Prevention using Javascript &amp; Cookies</h1>
+
+<h2>
+<a name="purpose" class="anchor" href="#purpose"><span class="octicon octicon-link"></span></a>Purpose:</h2>
+
+<p>Provide a simple, transparent authorization mechanism to insure submission authenticity. This example prevents resource abuse, automated and/or remote access. Simply put, it prevents CSRF, unwanted access to sensitive application resources as well as preventing bot activity (spam).</p>
+
+<p>Replaces CAPTCHA and other CSRF form tokenization techniques, the latter still being susceptible to scraping the form input and submission. By using client side events attached to elements (form submit &amp; link clicks) to store a cookie on the client, we eliminate the ability of a vast majority of tools &amp; techniques to access protected resources. Best of all, it's transparent to the user, replacing the need for CAPTCHA's and other annoying human tests.</p>
+
+<h2>
+<a name="usages" class="anchor" href="#usages"><span class="octicon octicon-link"></span></a>Usages:</h2>
+
+<ul>
+<li>Using Ajax <code>$_GET</code> URL's to retrieve a user's profile information exposes the URL and can be accessed by copying the URL directly into the address bar. Allowing the exposed data to be scraped or exploited (DoS, trickle attacks, etc). Past and current solutions include checking <code>$_SERVER['HTTP_X_REQUESTED_WITH']</code> (easily spoofed) or using the <code>$_POST</code> method. This technique will protect any URL using any method.</li>
+<li>Most forms these days include a hidden input token also stashed in a session variable. Sessions are generally client agnostic which would allow a remote script to scrape the token value out of the input and post everything to the action URL effectively defeating its purpose. This technique ensures the client triggers a javascript event and is able to store a cookie set by javascript. As a reminder, cookies can only be set on the domain the script is running on (never minding iframes), this ensures that the client is on your site, following the flow required to access the resource.</li>
+<li>You might have links like: <code>/profile/delete</code> or <code>/contact/add/123</code>. Local or remote links can then be crafted to these URL's baiting unsuspecting users into performing unintended actions. This technique can be attached to any javascript event (ie: click) and resolves this issue by requiring a token obtained by triggering an event (click) to complete the action.</li>
+<li>Another "solution" I've seen is checking the referer to ensure actions taken are verified to be on the local domain. Some browsers and/or firewalls block the referer from being sent, and it can also be easily spoofed. This technique ensures the event was fired on the domain the cookie was created.</li>
+</ul><h2>
+<a name="suggestions" class="anchor" href="#suggestions"><span class="octicon octicon-link"></span></a>Suggestions:</h2>
+
+<ul>
+<li>Change the encryption. I swiped that bit off the internets because I didn't want to deal with noting PHP versions, modules, algorithms, etc.</li>
+<li>You might still want to think about double clicks. You could check if a click has happened and just return <code>false</code> instead of creating another token which would prevent extra clicks from propagating and having any effect.</li>
+<li>You could, if you were crafty enough, set tokens by name (eg: <code>OBJ.setToken('foo');</code>) and check them by name (eg: <code>valid_ajax_token('foo');</code>). It'd be useful if you wanted to fire multiple protected events.</li>
+</ul><h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples:</h2>
+
+<p>Examples included. Load up index.php and go.</p>
+
+<p><em>Copyright 2009 Devin Hayes, <a href="http://unlicense.org/UNLICENSE">Public Domain License</a></em></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/devayes">devayes</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

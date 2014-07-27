@@ -22,7 +22,7 @@ Suggestions:
 
 Caveats:
 ------------
-If a user has javascript or cookies disabled (< 2% of users), it will impede functionality. These are testable and left as an exercise for the developer. [(hint)](www.google.com).
+If a user has javascript or cookies disabled (< 2% of users), it will impede functionality. These are testable and left as an exercise for the developer. [(hint)](http://www.google.com)
 
 Examples:
 ------------

@@ -1,6 +1,8 @@
 CSRF Prevention using Javascript & Cookies
 ==========
 
+**This is really, really, really old. The general principles are still somewhat useful, so I'm leaving it up.**
+
 Purpose:
 ------------
 Provide a simple, transparent authorization mechanism to insure submission authenticity. This example prevents resource abuse, automated and/or remote access. Simply put, it prevents CSRF, unwanted access to sensitive application resources as well as preventing bot activity (spam).

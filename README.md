@@ -1,7 +1,7 @@
 CSRF Prevention using Javascript & Cookies
 ==========
 
-**This is really, really, really old. The general principles are still somewhat useful, so I'm leaving it up.**
+**This is really, really, really, really, really, really old. No one should use this.**
 
 Purpose:
 ------------
